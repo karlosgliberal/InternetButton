@@ -1,4 +1,4 @@
-#include "InternetButton/InternetButton.h"
+#include "InternetButtonInterzonas/InternetButtonInterzonas.h"
 #include "math.h"
 
 /* Let me show you how easy it is to put the Button on the Internet.
@@ -6,12 +6,12 @@ Useful info, like how to access the data from your browser, can be
 found here: http://docs.particle.io/photon/firmware/#particle-function
 
 The code to control the number of illuminated LEDs is here:
-https://github.com/spark/InternetButton/blob/master/controlKnob.html
-Try naming one of your devices "InternetButton" and running controlKnob in your browser or on your phone!
-Note that the Core or Photon *must* be named "InternetButton" because the javascript looks for it.
+https://github.com/spark/InternetButtonInterzonas/blob/master/controlKnob.html
+Try naming one of your devices "InternetButtonInterzonas" and running controlKnob in your browser or on your phone!
+Note that the Core or Photon *must* be named "InternetButtonInterzonas" because the javascript looks for it.
 */
 
-InternetButton b = InternetButton();
+InternetButtonInterzonas b = InternetButtonInterzonas();
 float brightness = 0.1;
 int red, green, blue;
 int howMany = 6;

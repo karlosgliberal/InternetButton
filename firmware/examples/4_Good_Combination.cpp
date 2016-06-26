@@ -1,9 +1,9 @@
-#include "InternetButton/InternetButton.h"
+#include "InternetButtonInterzonas/InternetButtonInterzonas.h"
 
 /* Here's a nice combination of features that I like to use.
 Note the use of the allButtons function. */
 
-InternetButton b = InternetButton();
+InternetButtonInterzonas b = InternetButtonInterzonas();
 
 bool rainbow_mode = false;
 

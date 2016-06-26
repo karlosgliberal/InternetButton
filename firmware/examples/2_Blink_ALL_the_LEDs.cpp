@@ -1,9 +1,9 @@
-#include "InternetButton/InternetButton.h"
+#include "InternetButtonInterzonas/InternetButtonInterzonas.h"
 
-/* This InternetButton library has some useful functions.
+/* This InternetButtonInterzonas library has some useful functions.
 Here we blink ALL the LEDs instead of just one.*/
 
-InternetButton b = InternetButton();
+InternetButtonInterzonas b = InternetButtonInterzonas();
 
 void setup() {
     // Use b.begin(1); if you have the original SparkButton, which does not have a buzzer or a plastic enclosure

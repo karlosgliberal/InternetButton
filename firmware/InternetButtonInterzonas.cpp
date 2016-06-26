@@ -1,4 +1,4 @@
-#include "InternetButton.h"
+#include "InternetButtonInterzonas.h"
 #include "math.h"
 
 //----------------- Button ----------------//
@@ -13,11 +13,11 @@ uint8_t b4 = 7;
 Adafruit_NeoPixel ring = Adafruit_NeoPixel(PIXEL_COUNT, pin, PIXEL_TYPE);
 ADXL362 accelerometer;
 
-InternetButton::InternetButton(){
+InternetButtonInterzonas::InternetButtonInterzonas(){
 
 }
 
-void InternetButton::begin(){
+void InternetButtonInterzonas::begin(){
     ring.begin();
     ring.show();
 
@@ -31,7 +31,7 @@ void InternetButton::begin(){
     pinMode(b4, INPUT_PULLUP);
 }
 
-void InternetButton::begin(int i){
+void InternetButtonInterzonas::begin(int i){
     if(i == 1 || i == 0){
         pin = 17;
         b1 = 1;
@@ -54,7 +54,7 @@ void InternetButton::begin(int i){
     pinMode(b4, INPUT_PULLUP);
 }
 
-void InternetButton::ledOn(uint8_t i, uint8_t r, uint8_t g, uint8_t b){
+void InternetButtonInterzonas::ledOn(uint8_t i, uint8_t r, uint8_t g, uint8_t b){
     //i-1 shifts the location from human readable to the right index for the LEDs
     if(i == 12){
         ring.setPixelColor(0, ring.Color(r,g,b));
@@ -66,7 +66,7 @@ void InternetButton::ledOn(uint8_t i, uint8_t r, uint8_t g, uint8_t b){
     ring.show();
 }
 
-void InternetButton::smoothLedOn(float i, uint8_t r, uint8_t g, uint8_t b){
+void InternetButtonInterzonas::smoothLedOn(float i, uint8_t r, uint8_t g, uint8_t b){
     //uint8_t intI = lrintf(i);
     //Serial.print("intI: ");
     //Serial.println(intI);
@@ -107,25 +107,25 @@ void InternetButton::smoothLedOn(float i, uint8_t r, uint8_t g, uint8_t b){
     ring.show();
 }
 
-void InternetButton::ledOff(uint8_t i){
+void InternetButtonInterzonas::ledOff(uint8_t i){
     ledOn(i,0,0,0);
 }
 
-void InternetButton::allLedsOff(){
+void InternetButtonInterzonas::allLedsOff(){
     for(int i = 0; i<PIXEL_COUNT; i++){
             ring.setPixelColor(i, ring.Color(0, 0, 0));
     }
     ring.show();
 }
 
-void InternetButton::allLedsOn(uint8_t r, uint8_t g, uint8_t b){
+void InternetButtonInterzonas::allLedsOn(uint8_t r, uint8_t g, uint8_t b){
     for(int i = 0; i<PIXEL_COUNT; i++){
             ring.setPixelColor(i, ring.Color(r, g, b));
     }
     ring.show();
 }
 
-uint8_t InternetButton::buttonOn(uint8_t i){
+uint8_t InternetButtonInterzonas::buttonOn(uint8_t i){
     if(b1 == 4){
         return !digitalRead(i+3);
     }
@@ -134,7 +134,7 @@ uint8_t InternetButton::buttonOn(uint8_t i){
     }
 }
 
-uint8_t InternetButton::allButtonsOn(){
+uint8_t InternetButtonInterzonas::allButtonsOn(){
     if(!digitalRead(b1) && !digitalRead(b2) && !digitalRead(b3) && !digitalRead(b4)) {
         return 1;
     }
@@ -143,7 +143,7 @@ uint8_t InternetButton::allButtonsOn(){
     }
 }
 
-uint8_t InternetButton::allButtonsOff(){
+uint8_t InternetButtonInterzonas::allButtonsOff(){
     if(digitalRead(b1) && digitalRead(b2) && digitalRead(b3) && digitalRead(b4)) {
         return 1;
     }
@@ -152,7 +152,7 @@ uint8_t InternetButton::allButtonsOff(){
     }
 }
 
-void InternetButton::rainbow(uint8_t wait) {
+void InternetButtonInterzonas::rainbow(uint8_t wait) {
   uint16_t i, j;
 
   for(j=0; j<256; j++) { // 1 cycle of all colors on wheel
@@ -173,47 +173,47 @@ void InternetButton::rainbow(uint8_t wait) {
   }
 }
 
-int InternetButton::readX(){
+int InternetButtonInterzonas::readX(){
     return accelerometer.readX();
 }
 
-int InternetButton::readY(){
+int InternetButtonInterzonas::readY(){
     return accelerometer.readY();
 }
 
-int InternetButton::readZ(){
+int InternetButtonInterzonas::readZ(){
     return accelerometer.readZ();
 }
 
-int InternetButton::readX16(){
+int InternetButtonInterzonas::readX16(){
     return accelerometer.readX16();
 }
 
-int InternetButton::readY16(){
+int InternetButtonInterzonas::readY16(){
     return accelerometer.readY16();
 }
 
-int InternetButton::readZ16(){
+int InternetButtonInterzonas::readZ16(){
     return accelerometer.readZ16();
 }
 
 //Thanks christophevg!
-uint8_t InternetButton::lowestLed(){
+uint8_t InternetButtonInterzonas::lowestLed(){
     float rads = atan2(accelerometer.readY16(),accelerometer.readX16());
     uint8_t ledPos = (uint8_t)(12 - (rads/(M_PI/6) - 3)) % 12;
     return ledPos;
 }
 
-void InternetButton::playSong(String song){
+void InternetButtonInterzonas::playSong(String song){
     char inputStr[200];
     song.toCharArray(inputStr,200);
-    
+
     Serial.println(inputStr);
-    
+
     char *note = strtok(inputStr,",");
     char *duration = strtok(NULL,",");
     playNote(note,atoi(duration));
-    
+
     while(duration != NULL){
         note = strtok(NULL,",");
         Serial.println(note);
@@ -226,22 +226,22 @@ void InternetButton::playSong(String song){
     }
 }
 
-void InternetButton::playNote(String note, int duration){
+void InternetButtonInterzonas::playNote(String note, int duration){
     int noteNum = 0;
     int octave = 5;
     int freq = 256;
-    
+
      //if(9 - int(command.charAt(1)) != null){
     char octavo[5];
     String tempString = note.substring(1,2);
     tempString.toCharArray(octavo,5);
     octave = atoi(octavo);
     //}
-    
+
     if(duration != 0){
         duration = 1000/duration;
     }
-    
+
     switch(note.charAt(0)){
         case 'C':
             noteNum = 0;
@@ -271,12 +271,12 @@ void InternetButton::playNote(String note, int duration){
             break;
             //return -1;
     }
-    
+
     // based on equation at http://www.phy.mtu.edu/~suits/NoteFreqCalcs.html and the Verdi tuning
     // fn = f0*(2^1/12)^n where n = number of half-steps from the reference frequency f0
     freq = float(256*pow(1.05946,(     12.0*(octave-4)        +noteNum)));
     //          C4^  (2^1/12)^    12 half-steps in an octave      ^how many extra half-steps within that octave, 0 for a C
-    
+
     tone(D0,int(freq),duration);
     delay(duration);
     noTone(D0);

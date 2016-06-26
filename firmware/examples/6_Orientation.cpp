@@ -1,11 +1,11 @@
-#include "InternetButton/InternetButton.h"
+#include "InternetButtonInterzonas/InternetButtonInterzonas.h"
 #include "math.h"
 
 /* Did you know that the Internet Button can detect if it's moving? It's true!
 Specifically it can read when it's being accelerated. Recall that gravity
 is a constant acceleration and this becomes very useful- you know the orientation!*/
 
-InternetButton b = InternetButton();
+InternetButtonInterzonas b = InternetButtonInterzonas();
 
 void setup() {
     // Tell b to get everything ready to go

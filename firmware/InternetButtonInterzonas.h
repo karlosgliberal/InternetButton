@@ -21,14 +21,14 @@
 
 #include "application.h"
 
-#ifndef InternetButton_h
-#define InternetButton_h
+#ifndef InternetButtonInterzonas_h
+#define InternetButtonInterzonas_h
 
-class InternetButton {
+class InternetButtonInterzonas {
 
  public:
 
-  InternetButton();
+  InternetButtonInterzonas();
 
   void
     begin(void),
@@ -276,4 +276,4 @@ class Adafruit_NeoPixel {
 };
 
 #endif // ADAFRUIT_NEOPIXEL_H
-#endif // InternetButton_h
+#endif // InternetButtonInterzonas_h

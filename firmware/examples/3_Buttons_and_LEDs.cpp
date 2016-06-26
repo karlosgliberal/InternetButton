@@ -1,8 +1,8 @@
-#include "InternetButton/InternetButton.h"
+#include "InternetButtonInterzonas/InternetButtonInterzonas.h"
 
 /* How about we make this interactive? */
 
-InternetButton b = InternetButton();
+InternetButtonInterzonas b = InternetButtonInterzonas();
 
 void setup() {
     // Tell b to get everything ready to go

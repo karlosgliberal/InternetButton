@@ -1,9 +1,9 @@
-#include "InternetButton/InternetButton.h"
+#include "InternetButtonInterzonas/InternetButtonInterzonas.h"
 
 // Create a Button named b. It will be your friend, and you two will spend lots of time together.
 // You may be wondering about those two slashes and this gray text- they're called comments, and
 // don't affect the code. Think of this as the voice of the narrator.
-InternetButton b = InternetButton();
+InternetButtonInterzonas b = InternetButtonInterzonas();
 
 // The code in setup() runs once when the device is powered on or reset. Used for setting up states, modes, etc
 void setup() {
